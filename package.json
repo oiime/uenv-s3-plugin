@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "s3 plugin for uenv configuration manager with encryption support",
   "main": "index.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "scripts": {
     "test": "mocha spec/*.spec.js"
   },

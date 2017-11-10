@@ -24,23 +24,21 @@ const s3 = uenv.s3({ bucket: 's3bucket', key: 'stored_path', encryption: { passw
 // using callback
 s3.getObject(err => {
   // data now available
-  uenv.get('s3_stored_key')
-  uenv.set('foo', 'bar')
-
+  uenv.get('key.from.s3')
   // store changes in S3
+  uenv.set('foo', 'bar')
   s3.putObject()
 })
 
 // using promises
-
 s3.getObject().then(() => {
-
+  uenv.get('key.from.s3')
 })
 
-// assign results to a leaf
-const s3Leaf = uenv.s3('child.place' { bucket: 's3bucket', key: 'stored_path', encryption: { password: '123456' } })
+// assign results to a child
+const child = uenv.s3Child('child.place' { bucket: 's3bucket', key: 'stored_path', encryption: { password: '123456' } })
 
-s3.getObject().then(() => {
+child.getObject().then(() => {
   uenv.get('child.place.foo') // bar
 })
 
